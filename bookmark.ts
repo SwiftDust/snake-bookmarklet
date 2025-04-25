@@ -11,6 +11,7 @@ let direction: Direction = "RIGHT";
 urlBar.style.position = "absolute";
 urlBar.style.width = "350px";
 urlBar.style.height = "50px";
+urlBar.blur() // unfocuses the URL bar so that you won't accidentally type in the search bar when playing the game
 
 function changeXY(x: number, y: number) {
     coordinates.x += x;
@@ -22,7 +23,6 @@ function changeRotation(degrees: number) {
 }
 
 window.addEventListener("keydown", event => {
-
     if (event.key === "ArrowUp" || event.key === "w" || event.key === "W") direction = "UP";
     if (event.key === "ArrowDown" || event.key === "s" || event.key === "S") direction = "DOWN";
     if (event.key === "ArrowLeft" || event.key === "a" || event.key === "A") direction = "LEFT"; 
@@ -51,6 +51,7 @@ function gameLoop() {
             break;
     }
 
+    // using CSS, we set the absolute position of the search bar to the "coordinates" we get by moving the search bar
     urlBar.style.left = `${coordinates.x}px`;
     urlBar.style.top = `${coordinates.y}px`;
 
