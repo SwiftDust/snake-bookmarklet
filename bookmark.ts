@@ -5,10 +5,10 @@ const coordinates = {
     y: 0
 }
 
-const urlBar = document.querySelector('.RNNXgb') as HTMLElement;
+const urlBar = document.querySelector(".RNNXgb") as HTMLElement;
 let direction: Direction = "RIGHT";
 
-urlBar.style.position = 'absolute';
+urlBar.style.position = "absolute";
 urlBar.style.width = "350px";
 urlBar.style.height = "50px";
 
@@ -22,28 +22,33 @@ function changeRotation(degrees: number) {
 }
 
 window.addEventListener("keydown", event => {
-    if (event.key === "ArrowUp") direction = "UP";
-    if (event.key === "ArrowDown") direction = "DOWN";
-    if (event.key === "ArrowLeft") direction = "LEFT"; 
-    if (event.key === "ArrowRight") direction = "RIGHT";
+
+    if (event.key === "ArrowUp" || event.key === "w" || event.key === "W") direction = "UP";
+    if (event.key === "ArrowDown" || event.key === "s" || event.key === "S") direction = "DOWN";
+    if (event.key === "ArrowLeft" || event.key === "a" || event.key === "A") direction = "LEFT"; 
+    if (event.key === "ArrowRight" || event.key === "d" || event.key === "D") direction = "RIGHT";
 });
 
 function gameLoop() {
-    if (direction === "RIGHT") {
-        changeXY(5, 0);
-        changeRotation(0);
-    }
-    if (direction === "LEFT") {
-        changeXY(-5, 0);
-        changeRotation(0);
-    }
-    if (direction === "UP") {
-        changeXY(0, -5);
-        changeRotation(90);
-    }
-    if (direction === "DOWN") {
-        changeXY(0, 5);
-        changeRotation(-90);
+    switch(direction) {
+        case "RIGHT":
+            changeXY(5, 0);
+            changeRotation(0);  
+            break;  
+        case "LEFT":
+            changeXY(-5, 0);
+            changeRotation(0);
+            break;
+        case "UP":
+            changeXY(0, -5);
+            changeRotation(90);
+            break;
+        case "DOWN":
+            changeXY(0, 5);
+            changeRotation(-90);
+            break;
+        default:
+            break;
     }
 
     urlBar.style.left = `${coordinates.x}px`;
