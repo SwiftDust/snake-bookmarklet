@@ -6,7 +6,7 @@ import ts from "typescript";
 import { minify } from "terser";
 import path from "path";
 
-const inputFileName = 'bookmark.ts';
+const inputFileName = "bookmark.ts";
 const inputFilePath = path.resolve(inputFileName);
 
 async function processFile() {
